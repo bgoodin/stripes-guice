@@ -1,0 +1,6 @@
+Overview
+
+  Stripes-Guice is a small library/extension that brings Guice DI
+  functionality to the Stripes web framework. It provides a means
+  to initialize Guice modules and inject Stripes ActionBeans,
+  ActionBeanContexts, and more.

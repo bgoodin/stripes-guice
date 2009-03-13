@@ -1,0 +1,14 @@
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
+<body>
+    <section name="How To Use Stripes-Guice">
+        <div>
+            <ul>
+                <li><a href="apidocs/com/silvermindsoftware/stripes/integration/guice/GuiceContextListener.html">JavaDoc on How to Configure the ServletContextListener (GuiceContextListener)</a></li>
+                <li><a href="apidocs/com/silvermindsoftware/stripes/action/GuiceActionResolver.html">JavaDoc on how to configure StripesFilter</a></li>
+            </ul>
+        </div>
+    </section>
+</body>
+</document>
