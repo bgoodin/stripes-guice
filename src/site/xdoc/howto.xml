@@ -1,14 +1,94 @@
 <document xmlns="http://maven.apache.org/XDOC/2.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
-<body>
-    <section name="How To Use Stripes-Guice">
-        <div>
-            <ul>
-                <li><a href="apidocs/com/silvermindsoftware/stripes/integration/guice/GuiceContextListener.html">JavaDoc on How to Configure the ServletContextListener (GuiceContextListener)</a></li>
-                <li><a href="apidocs/com/silvermindsoftware/stripes/action/GuiceActionResolver.html">JavaDoc on how to configure StripesFilter</a></li>
-            </ul>
-        </div>
-    </section>
-</body>
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
+    <body>
+        <section name="Configuring Stripes-Guice">
+            <subsection name="Basic">
+                <div>
+                    <p>
+                        Configure your web.xml to use the GuiceContextListener provided in Stripes-Guice.
+                    </p>
+                    <source>
+                        <![CDATA[
+<listener>
+    <listener-class>
+        com.silvermindsoftware.stripes.integration.guice.GuiceContextListener\n
+    </listener-class>
+</listener>
+                        ]]>
+                    </source>
+                    <p>
+                        After the listener is configured add a context-param named Guice.Modules and provide a
+                        comma-delimited fully qualified guice module class names.
+                    </p>
+                    <source>
+                    <![CDATA[
+<context-param>
+    <param-name>Guice.Modules</param-name>
+    <param-value>com.myapp.guice.MyServiceModule,com.myapp.guice.MyWebModule</param-value>
+</context-param>
+                    ]]>
+                    </source>
+                    <p>
+                        Finally you need to configure stripes to make use of the GuiceActionResolver by specifying the
+                        ActionResolver.Class. You also need to configure Stripes to utilize the GuiceInterceptor by
+                        adding it to your Interceptor.Classes. This is used to inject the ActionBeanContext. It is
+                        recommended that you configure the GuiceInterceptor as the first Interceptor.
+                    </p>
+                    <source>
+                    <![CDATA[
+<filter>
+    <display-name>Stripes Filter</display-name>
+    <filter-name>StripesFilter</filter-name>
+    <filter-class>net.sourceforge.stripes.controller.StripesFilter</filter-class>
+    ...
+    <init-param>
+        <param-name>Interceptor.Classes</param-name>
+        <param-value>com.silvermindsoftware.stripes.integration.guice.GuiceInterceptor</param-value>
+    </init-param>
+    <init-param>
+        <param-name>ActionResolver.Class</param-name>
+        <param-value>com.silvermindsoftware.stripes.action.GuiceActionResolver</param-value>
+    </init-param>
+    ...
+</filter>
+                    ]]>
+                    </source>
+                </div>
+            </subsection>
+            <subsection name="Implement Custom GuiceInjectorFactory">
+                <div>
+                    If you do not want to use the Default means of creating the Guice Injector you can override it by implementing
+                    your own GuiceInjectorFactory.
+                </div>
+                <div>
+                    First, write your own implementation of the GuiceInjectorFactory. In the following example the implementation
+                    hard codes the Modules instead of using the default mechanism of Guice.Modules context-param. It also passes
+                    the created injector into a static context that can be exposed to non-stripes components. This should be an unusual
+                    case. But, the need may arise.
+                </div>
+                <source>
+public class CustomInjectorFactory implements GuiceInjectorFactory {
+    @Override
+    public Injector getInjector(ServletContext servletContext) {
+        Injector injector = Guice.createInjector(new MyServiceModule(), new MyWebModule());
+        SomeStaticContextToExposeToSomewhereElse.init(injector);
+        return injector;
+    }
+}
+                </source>
+                <div>
+                    Next and finally, specify your custom implementation in a GuiceInjectorFactory.Class context-param.
+                </div>
+                <source>
+                <![CDATA[
+<context-param>
+    <param-name>GuiceInjectorFactory.Class</param-name>
+    <param-value>com.myapp.guice.CustomInjectorFactory</param-value>
+</context-param>
+                ]]>
+                </source>
+            </subsection>
+        </section>
+    </body>
 </document>

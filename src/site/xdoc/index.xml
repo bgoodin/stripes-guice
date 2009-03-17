@@ -1,0 +1,30 @@
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
+<body>
+    <section name="Overview">
+        <div>
+            Stripes-Guice is a small library/extension that brings Guice DI
+            functionality to the Stripes web framework. It provides a means
+            to initialize Guice modules and inject Stripes ActionBeans,
+            ActionBeanContexts, and more.
+        </div>
+    </section>
+    <section name="Features">
+        <ul>
+            <li>Initialization of Guice Modules via a ServletContextListener named GuiceContextListener.</li>
+            <li>Inject ActionBeans (including constructor) using the standard Guice annotation.</li>
+            <li>Inject ActionBeanContext members (no constructor injection... yet) using the standard Guice annotation.</li>
+            <li>Ability to provide custom means of retrieving Guice Injector through a custom GuiceInjectorFactory.</li>
+        </ul>
+    </section>
+    <section name="Planned Features">
+        <ul>
+            <li>Constructor Injection on all reasonable components.</li>
+            <li>Interceptor Injection</li>
+            <li>ConfigurableComponent Injection</li>
+            <li>Support for Stripes 1.6</li>
+        </ul>
+    </section>
+</body>
+</document>

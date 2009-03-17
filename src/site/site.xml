@@ -6,6 +6,7 @@
     <body>
         <menu name="Stripes-Guice">
             <item name="Overview" href="index.html"/>
+            <item name="Download" href="download.html"/>
             <item name="How To Use" href="howto.html"/>
             <item name="Dependencies" href="dependencies.html"/>
             <item name="Mailing List" href="mailinglist.html"/>
