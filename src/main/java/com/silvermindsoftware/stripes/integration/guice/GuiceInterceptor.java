@@ -15,7 +15,6 @@ public class GuiceInterceptor implements Interceptor {
         Injector injector = GuiceContextListener.getInjector();
         injector.injectMembers(context.getActionBeanContext());
         Resolution resolution = context.proceed();
-        injector.injectMembers(context.getActionBean());
         return resolution;
     }
 }
