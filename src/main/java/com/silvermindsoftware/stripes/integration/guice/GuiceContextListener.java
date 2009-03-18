@@ -1,14 +1,11 @@
 package com.silvermindsoftware.stripes.integration.guice;
 
-import com.google.inject.Guice;
 import com.google.inject.Injector;
-import com.google.inject.Module;
 import static com.silvermindsoftware.stripes.integration.guice.GuiceUtils.*;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
-import java.lang.ref.WeakReference;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -51,7 +48,7 @@ import java.util.Set;
  */
 public class GuiceContextListener implements ServletContextListener {
 
-    protected static final Set<Injector> inejectorSet =
+    protected static final Set<Injector> injectorSet =
             new HashSet<Injector>();
 
     public void contextInitialized(ServletContextEvent servletContextEvent) {
@@ -73,7 +70,7 @@ public class GuiceContextListener implements ServletContextListener {
             GuiceInjectorFactory factory =
                     (GuiceInjectorFactory)Class.forName(className).newInstance();
 
-            GuiceContextListener.inejectorSet.add(factory.getInjector(servletContext));
+            GuiceContextListener.injectorSet.add(factory.getInjector(servletContext));
 
         } catch (InstantiationException e) {
             throw new RuntimeException(e);
@@ -90,11 +87,11 @@ public class GuiceContextListener implements ServletContextListener {
      * @return
      */
     public static Injector getInjector() {
-        return inejectorSet.iterator().next();
+        return injectorSet.iterator().next();
     }
 
 
     public void contextDestroyed(ServletContextEvent servletContextEvent) {
-        inejectorSet.clear();
+        injectorSet.clear();
     }
 }
