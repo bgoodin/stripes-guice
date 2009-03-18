@@ -1,1 +1,1 @@
-mvn clean package install site assembly:assembly
+mvn clean install site assembly:single

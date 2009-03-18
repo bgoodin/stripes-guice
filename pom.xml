@@ -7,15 +7,16 @@
     <version>1.0-SNAPSHOT</version>
     <name>stripes-guice</name>
     <licenses>
-      <license>
-        <name>Apache 2</name>
-        <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-        <distribution>repo,manual</distribution>
-      </license>
+        <license>
+            <name>Apache 2</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo,manual</distribution>
+        </license>
     </licenses>
     <url>http://www.silvermindsoftware.com/stripes/guice/</url>
     <description>
-        Stripes-Guice is a small library/extension that brings Guice DI functionality to the Stripes web framework. It provides a means to initialize Guice modules and inject Stripes ActionBeans, ActionBeanContexts, and more.
+        Stripes-Guice is a small library/extension that brings Guice DI functionality to the Stripes web framework. It
+        provides a means to initialize Guice modules and inject Stripes ActionBeans, ActionBeanContexts, and more.
     </description>
     <scm>
         <url>http://www.silvermindsoftware.com/svn/stripes/guice/</url>
@@ -79,6 +80,18 @@
                     <aggregate>true</aggregate>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+                <version>2.4.3</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>report-only</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
         </plugins>
     </reporting>
     <build>
@@ -90,6 +103,17 @@
                 <configuration>
                     <source>1.5</source>
                     <target>1.5</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.4.3</version>
+                <configuration>
+                    <excludes>
+                        <exclude>com/silvermindsoftware/stripes/app/**/*</exclude>
+                        <exclude>com/silvermindsoftware/stripes/guice/**/*</exclude>
+                    </excludes>
                 </configuration>
             </plugin>
             <plugin>
@@ -107,6 +131,7 @@
             </plugin>
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.2-beta-3</version>
                 <configuration>
                     <descriptors>
                         <descriptor>src/assembly/descriptor.xml</descriptor>
@@ -141,7 +166,9 @@
         </snapshotRepository>
         <site>
             <id>silvermindsoftware.site</id>
-            <url>scp://silvermindsoftware.com/usr/local/resin/hosts/www.silvermindsoftware.com/webapps/ROOT/stripesguice/</url>
+            <url>
+                scp://silvermindsoftware.com/usr/local/resin/hosts/www.silvermindsoftware.com/webapps/ROOT/stripesguice/
+            </url>
         </site>
 
     </distributionManagement>

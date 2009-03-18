@@ -1,4 +1,4 @@
-package com.silvermindsoftware.stripes.guice;
+package com.silvermindsoftware.stripes.tests;
 
 import com.silvermindsoftware.stripes.app.actions.TestAction;
 import static com.silvermindsoftware.stripes.app.actions.TestAction.FETCH_LIST_RESOLUTION;
