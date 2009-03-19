@@ -58,7 +58,7 @@
     </init-param>
     <init-param>
         <param-name>ActionResolver.Class</param-name>
-        <param-value>com.silvermindsoftware.stripes.action.GuiceActionResolver</param-value>
+        <param-value>com.silvermindsoftware.stripes.controller.GuiceActionResolver</param-value>
     </init-param>
     ...
 </filter>
