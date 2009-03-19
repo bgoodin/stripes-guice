@@ -1,9 +1,8 @@
-package com.silvermindsoftware.stripes.action;
+package com.silvermindsoftware.stripes.controller;
 
 import com.silvermindsoftware.stripes.integration.guice.GuiceContextListener;
 import net.sourceforge.stripes.action.ActionBean;
 import net.sourceforge.stripes.action.ActionBeanContext;
-import net.sourceforge.stripes.config.Configuration;
 import net.sourceforge.stripes.controller.ActionResolver;
 import net.sourceforge.stripes.controller.NameBasedActionResolver;
 
@@ -11,7 +10,7 @@ import net.sourceforge.stripes.controller.NameBasedActionResolver;
  * <p>
  * Add the ActionResolver.Class init-param to your Stripes Filter and specify <code>com.silvermindsoftware.stripes.action.GuiceActionResolver</code>.
  * </p>
- *
+ * <p/>
  * <code>
  * &lt;filter&gt;<br/>
  * &nbsp;&nbsp;&lt;display-name&gt;Stripes Filter&lt;/display-name&gt;<br/>
@@ -26,11 +25,6 @@ import net.sourceforge.stripes.controller.NameBasedActionResolver;
  * </code>
  */
 public class GuiceActionResolver extends NameBasedActionResolver implements ActionResolver {
-
-    @Override
-    public void init(Configuration configuration) throws Exception {
-        super.init(configuration);
-    }
 
     @Override
     protected ActionBean makeNewActionBean(Class<? extends ActionBean> type, ActionBeanContext context) throws Exception {

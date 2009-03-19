@@ -1,11 +1,11 @@
 package com.silvermindsoftware.stripes.app.actions;
 
-import net.sourceforge.stripes.action.*;
-import com.silvermindsoftware.stripes.app.service.TestService;
+import com.google.inject.Inject;
 import com.silvermindsoftware.stripes.app.domain.TestUser;
 import com.silvermindsoftware.stripes.app.domain.TestWidget;
 import com.silvermindsoftware.stripes.app.extensions.TestActionBeanContext;
-import com.google.inject.Inject;
+import com.silvermindsoftware.stripes.app.service.TestService;
+import net.sourceforge.stripes.action.*;
 
 public class TestAction implements ActionBean {
 
@@ -30,7 +30,7 @@ public class TestAction implements ActionBean {
 
     /* PROPERTIES */
     public void setContext(ActionBeanContext actionBeanContext) {
-        this.actionBeanContext = (TestActionBeanContext)actionBeanContext;
+        this.actionBeanContext = (TestActionBeanContext) actionBeanContext;
     }
 
     public TestActionBeanContext getContext() {

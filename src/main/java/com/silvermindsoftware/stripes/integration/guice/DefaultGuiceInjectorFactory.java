@@ -1,17 +1,24 @@
 package com.silvermindsoftware.stripes.integration.guice;
 
+import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.Module;
-import com.google.inject.Guice;
 import static com.silvermindsoftware.stripes.integration.guice.GuiceUtils.GUICE_MODULES_PARAM;
 import static com.silvermindsoftware.stripes.integration.guice.GuiceUtils.splitClasses;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 import javax.servlet.ServletContext;
-import java.lang.ref.WeakReference;
+import java.text.MessageFormat;
 
 public class DefaultGuiceInjectorFactory implements GuiceInjectorFactory {
 
+    protected static final Log log = LogFactory.getLog(DefaultGuiceInjectorFactory.class);
+
     public Injector getInjector(ServletContext servletContext) {
+        if (log.isDebugEnabled()) {
+            log.debug(MessageFormat.format("Creating Injector with {0}.", DefaultGuiceInjectorFactory.class.getName()));
+        }
         String guiceModules = servletContext.getInitParameter(GUICE_MODULES_PARAM);
         Module[] modules = null;
 
@@ -30,20 +37,38 @@ public class DefaultGuiceInjectorFactory implements GuiceInjectorFactory {
             int x = 0;
             for (String className : classNames) {
                 try {
+                    if (log.isDebugEnabled()) {
+                        log.debug(MessageFormat.format("Instantiating Module of type {0}.", className));
+                    }
                     modules[x] = (Module) Class.forName(className).newInstance();
                 } catch (ClassNotFoundException e) {
+                    log.error(
+                            MessageFormat.format(
+                                    "{0} thrown during Module instantiation of {1} with message {2}",
+                                    ClassNotFoundException.class.getName(),
+                                    className, e.getMessage()), e);
                     throw new RuntimeException(e);
                 } catch (IllegalAccessException e) {
+                    log.error(
+                            MessageFormat.format(
+                                    "{0} thrown during Module instantiation of {1} with message {2}",
+                                    IllegalAccessException.class.getName(),
+                                    className, e.getMessage()), e);
                     throw new RuntimeException(e);
                 } catch (InstantiationException e) {
+                    log.error(
+                            MessageFormat.format(
+                                    "{0} thrown during Module instantiation of {1} with message {2}",
+                                    InstantiationException.class.getName(),
+                                    className, e.getMessage()), e);
                     throw new RuntimeException(e);
                 }
                 x++;
             }
-           
+
         }
 
         return Guice.createInjector(modules);
     }
-    
+
 }

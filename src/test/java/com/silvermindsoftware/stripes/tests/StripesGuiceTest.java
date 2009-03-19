@@ -2,8 +2,8 @@ package com.silvermindsoftware.stripes.tests;
 
 import com.silvermindsoftware.stripes.app.actions.TestAction;
 import static com.silvermindsoftware.stripes.app.actions.TestAction.FETCH_LIST_RESOLUTION;
-import static com.silvermindsoftware.stripes.app.extensions.TestActionBeanContext.TEST_USER_ID;
 import static com.silvermindsoftware.stripes.app.domain.TestWidget.DEFAULT_WIDGET_NAME;
+import static com.silvermindsoftware.stripes.app.extensions.TestActionBeanContext.TEST_USER_ID;
 import com.silvermindsoftware.stripes.integration.guice.GuiceContextListener;
 import net.sourceforge.stripes.controller.DispatcherServlet;
 import net.sourceforge.stripes.controller.StripesFilter;
@@ -26,26 +26,32 @@ public class StripesGuiceTest {
 
     @BeforeClass
     public static void setUp() {
-        mockServletContext = new MockServletContext("web");
+        Map<String, String> params = new HashMap<String, String>();
 
+        params.put("ActionResolver.Packages", "com.silvermindsoftware.stripes.app.actions");
+        params.put("Extension.Packages", "com.silvermindsoftware.stripes.app.extensions");
+        params.put("Interceptor.Classes", "com.silvermindsoftware.stripes.app.interceptors.TestInterceptor");
+
+        params.put("ActionResolver.Class", "com.silvermindsoftware.stripes.controller.GuiceActionResolver");
+        params.put("ActionBeanContextFactory.Class", "com.silvermindsoftware.stripes.controller.GuiceActionBeanContextFactory");
+        params.put("Configuration.Class", "com.silvermindsoftware.stripes.config.GuiceRuntimeConfiguration");
+
+        mockServletContext = new MockServletContext("web");
         mockServletContext.addInitParameter("Guice.Modules", "com.silvermindsoftware.stripes.guice.TestModule");
         mockServletContext.addInitParameter("GuiceInjectorFactory.Class", "com.silvermindsoftware.stripes.guice.TestGuiceInjectorFactory");
+
         ServletContextEvent servletContextEvent = new ServletContextEvent(mockServletContext);
 
         contextListener = new GuiceContextListener();
         contextListener.contextInitialized(servletContextEvent);
-
-        Map<String, String> params = new HashMap<String, String>();
-        params.put("ActionResolver.Packages", "com.silvermindsoftware.stripes.app.actions");
-        params.put("Extension.Packages", "com.silvermindsoftware.stripes.app.extensions");
-        params.put("ActionResolver.Class", "com.silvermindsoftware.stripes.action.GuiceActionResolver");
-        params.put("Interceptor.Classes", "com.silvermindsoftware.stripes.integration.guice.GuiceInterceptor");
         mockServletContext.addFilter(StripesFilter.class, "Stripes Filter", params);
         mockServletContext.setServlet(DispatcherServlet.class, "StripesDispatcher", null);
     }
 
+
     @Test
-    public void testBasic() throws Exception {
+    public void testBasicWithRuntimeInterceptorInjection() throws Exception {
+
         MockRoundtrip mockRoundtrip = new MockRoundtrip(mockServletContext, TestAction.class);
         mockRoundtrip.execute();
 
@@ -61,7 +67,6 @@ public class StripesGuiceTest {
                 MessageFormat.format("Expected destination of {0} but received {1} instead.",
                         FETCH_LIST_RESOLUTION, mockRoundtrip.getDestination()),
                 mockRoundtrip.getDestination().equals(FETCH_LIST_RESOLUTION));
-
     }
 
 }

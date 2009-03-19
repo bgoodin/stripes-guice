@@ -13,16 +13,13 @@
     <section name="Features">
         <ul>
             <li>Initialization of Guice Modules via a ServletContextListener named GuiceContextListener.</li>
-            <li>Inject ActionBeans (including constructor) using the standard Guice annotation.</li>
-            <li>Inject ActionBeanContext members (no constructor injection... yet) using the standard Guice annotation.</li>
+            <li>Inject constructors and members on ActionBeans, ActionBeanContext, and Interceptors using standard Guice mechanisms.</li>
             <li>Ability to provide custom means of retrieving Guice Injector through a custom GuiceInjectorFactory.</li>
         </ul>
     </section>
     <section name="Planned Features">
         <ul>
-            <li>Constructor Injection on all reasonable components.</li>
-            <li>Interceptor Injection</li>
-            <li>ConfigurableComponent Injection</li>
+            <li>Support for Constructor/Member injection of ConfigurableComponents being contemplated.</li>
             <li>Support for Stripes 1.6</li>
         </ul>
     </section>

@@ -30,10 +30,16 @@
                     ]]>
                     </source>
                     <p>
-                        Finally you need to configure stripes to make use of the GuiceActionResolver by specifying the
-                        ActionResolver.Class. You also need to configure Stripes to utilize the GuiceInterceptor by
-                        adding it to your Interceptor.Classes. This is used to inject the ActionBeanContext. It is
-                        recommended that you configure the GuiceInterceptor as the first Interceptor.
+                        Finally you need to configure stripes to make use of the GuiceActionResolver, GuiceActionBeanContextFactory, and GuiceRuntimeConfiguration.
+                        This will provide your ActionBeans, ActionBeanContext, and Interceptors with full Guice constructor and member injection support. All you
+                        need to do is add the following configurations to Stripes and annotate your classes as you would any other Guice injectable class.
+                    </p>
+                    <p>
+                        <strong>
+                            NOTE: If you already have an implementation of these classes you can change the classes your implementation extend to extend the
+                            Stripes-Guice implementations. This is not an ideal approach. But, it will maintain the most consistent feature support across
+                            Stripes 1.5 and 1.6.
+                        </strong>
                     </p>
                     <source>
                     <![CDATA[
@@ -43,8 +49,12 @@
     <filter-class>net.sourceforge.stripes.controller.StripesFilter</filter-class>
     ...
     <init-param>
-        <param-name>Interceptor.Classes</param-name>
-        <param-value>com.silvermindsoftware.stripes.integration.guice.GuiceInterceptor</param-value>
+        <param-name>Configuration.Class</param-name>
+        <param-value>com.silvermindsoftware.stripes.config.GuiceRuntimeConfiguration</param-value>
+    </init-param>
+    <init-param>
+        <param-name>ActionBeanContextFactory.Class</param-name>
+        <param-value>com.silvermindsoftware.stripes.controller.GuiceActionBeanContextFactory</param-value>
     </init-param>
     <init-param>
         <param-name>ActionResolver.Class</param-name>

@@ -2,8 +2,8 @@ package com.silvermindsoftware.stripes.app.service;
 
 import com.silvermindsoftware.stripes.app.domain.TestUser;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 public class TestServiceImpl implements TestService {
 

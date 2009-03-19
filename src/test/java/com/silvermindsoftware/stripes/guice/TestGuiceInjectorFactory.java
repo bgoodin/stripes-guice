@@ -1,9 +1,8 @@
 package com.silvermindsoftware.stripes.guice;
 
-import com.silvermindsoftware.stripes.integration.guice.GuiceInjectorFactory;
-import com.silvermindsoftware.stripes.integration.guice.DefaultGuiceInjectorFactory;
 import com.google.inject.Injector;
-import com.google.inject.Guice;
+import com.silvermindsoftware.stripes.integration.guice.DefaultGuiceInjectorFactory;
+import com.silvermindsoftware.stripes.integration.guice.GuiceInjectorFactory;
 
 import javax.servlet.ServletContext;
 
@@ -14,5 +13,5 @@ public class TestGuiceInjectorFactory extends DefaultGuiceInjectorFactory implem
         InjectorHelper.init(injector);
         return injector;
     }
-    
+
 }

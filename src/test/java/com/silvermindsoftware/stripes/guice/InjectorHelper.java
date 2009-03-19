@@ -2,9 +2,6 @@ package com.silvermindsoftware.stripes.guice;
 
 import com.google.inject.Injector;
 
-import java.util.Set;
-import java.util.HashSet;
-
 public class InjectorHelper {
 
     private Injector injector;
@@ -19,14 +16,14 @@ public class InjectorHelper {
     }
 
     public static InjectorHelper init(Injector injector) {
-        if(helper == null) {
+        if (helper == null) {
             helper = new InjectorHelper(injector);
         }
         return helper;
     }
 
     public static Injector get() {
-        if(helper == null) {
+        if (helper == null) {
             throw new RuntimeException("You must call init first.");
         }
         return helper.getInjector();

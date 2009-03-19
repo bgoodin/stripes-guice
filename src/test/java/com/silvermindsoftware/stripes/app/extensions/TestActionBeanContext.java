@@ -1,9 +1,9 @@
 package com.silvermindsoftware.stripes.app.extensions;
 
-import net.sourceforge.stripes.action.ActionBeanContext;
-import com.silvermindsoftware.stripes.app.service.TestService;
-import com.silvermindsoftware.stripes.app.domain.TestUser;
 import com.google.inject.Inject;
+import com.silvermindsoftware.stripes.app.domain.TestUser;
+import com.silvermindsoftware.stripes.app.service.TestService;
+import net.sourceforge.stripes.action.ActionBeanContext;
 
 public class TestActionBeanContext extends ActionBeanContext {
 
@@ -11,13 +11,13 @@ public class TestActionBeanContext extends ActionBeanContext {
 
     private TestService testService;
 
-    public TestService getTestService() {
-        return testService;
+    @Inject
+    public TestActionBeanContext(TestService testService) {
+        this.testService = testService;
     }
 
-    @Inject
-    public void setTestService(TestService testService) {
-        this.testService = testService;
+    public TestService getTestService() {
+        return testService;
     }
 
     public TestUser getTestUser() {
