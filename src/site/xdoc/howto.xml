@@ -12,7 +12,7 @@
                         <![CDATA[
 <listener>
     <listener-class>
-        com.silvermindsoftware.stripes.integration.guice.GuiceContextListener\n
+        com.silvermindsoftware.stripes.integration.guice.GuiceContextListener
     </listener-class>
 </listener>
                         ]]>
