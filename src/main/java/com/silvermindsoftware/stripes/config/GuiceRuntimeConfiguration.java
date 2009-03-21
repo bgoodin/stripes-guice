@@ -1,7 +1,6 @@
 package com.silvermindsoftware.stripes.config;
 
 import com.silvermindsoftware.stripes.integration.guice.GuiceContextListener;
-import net.sourceforge.stripes.config.ConfigurableComponent;
 import net.sourceforge.stripes.config.RuntimeConfiguration;
 import net.sourceforge.stripes.controller.Interceptor;
 import net.sourceforge.stripes.controller.LifecycleStage;
