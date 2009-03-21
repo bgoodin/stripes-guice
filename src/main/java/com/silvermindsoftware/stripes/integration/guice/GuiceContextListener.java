@@ -10,14 +10,13 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import java.text.MessageFormat;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * <p>
- * The following can be added to the web.xml in order to use the {@link com.silvermindsoftware.stripes.integration.guice.GuiceContextListener GuiceContextListener}.
- * Just replace the GuiceModules param-value with a comma-delimited list of Modules you want
- * to initialize.
+ * The following can be added to the web.xml in order to use the
+ * {@link com.silvermindsoftware.stripes.integration.guice.GuiceContextListener
+ * GuiceContextListener}. Just replace the GuiceModules param-value with a
+ * comma-delimited list of Modules you want to initialize.
  * </p>
  * <p/>
  * <code>
@@ -38,8 +37,10 @@ import java.util.Set;
  * </code>
  * <p/>
  * <p>
- * Alternate functionality can be provided for creating the Injector. Simply implement the
- * {@link com.silvermindsoftware.stripes.integration.guice.GuiceInjectorFactory DefaultGuiceInjectorFactory} and specify it in an context-param:
+ * Alternate functionality can be provided for creating the Injector. Simply
+ * implement the
+ * {@link com.silvermindsoftware.stripes.integration.guice.GuiceInjectorFactory
+ * DefaultGuiceInjectorFactory} and specify it in an context-param:
  * </p>
  * <p/>
  * <code>
@@ -52,9 +53,7 @@ import java.util.Set;
 public class GuiceContextListener implements ServletContextListener {
 
     private static final Log log = LogFactory.getLog(GuiceContextListener.class);
-
-    protected static final Set<Injector> injectorSet =
-            new HashSet<Injector>();
+    protected static Injector injector;
 
     public void contextInitialized(ServletContextEvent servletContextEvent) {
         if (log.isDebugEnabled()) {
@@ -66,43 +65,31 @@ public class GuiceContextListener implements ServletContextListener {
     /**
      * @param servletContext
      */
-    protected void initInjector(ServletContext servletContext) {
+    protected synchronized void initInjector(ServletContext servletContext) {
         String className = servletContext.getInitParameter(GUICE_INJECTOR_FACTORY_CLASS_NAME);
-        if (className == null || className.trim().length() == 0) {
+        if (className == null)
             className = DEFAULT_GUICE_INJECTOR_FACTORY_CLASS_NAME;
+        else {
+            // Make sure the className is trimmed for the check and the usage
+            // later on
+            className = className.trim();
+            if (className.length() == 0)
+                className = DEFAULT_GUICE_INJECTOR_FACTORY_CLASS_NAME;
         }
-
+        // Maybe also this way, but I'm not sure if the string will be null or
+        // empty if no init parameter is supplied
+        // className = className == null ?
+        // DEFAULT_GUICE_INJECTOR_FACTORY_CLASS_NAME : className.trim();
         try {
-
-            if (log.isDebugEnabled()) {
-                log.debug(MessageFormat.format("Instantiating {0} of type {1}", GuiceInjectorFactory.class.getName(), className));
-            }
-            GuiceInjectorFactory factory =
-                    (GuiceInjectorFactory) Class.forName(className).newInstance();
-
-            GuiceContextListener.injectorSet.add(factory.getInjector(servletContext));
-
-        } catch (InstantiationException e) {
-            log.error(MessageFormat.format(
-                    "{0} thrown while instantiating {1} of type {2} with message {3}",
-                    InstantiationException.class.getName(),
-                    GuiceInjectorFactory.class.getName(),
-                    className, e.getMessage()), e);
-            throw new RuntimeException(e);
-        } catch (IllegalAccessException e) {
-            log.error(MessageFormat.format(
-                    "{0} thrown while instantiating {1} of type {2} with message {3}",
-                    IllegalAccessException.class.getName(),
-                    GuiceInjectorFactory.class.getName(),
-                    className, e.getMessage()), e);
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
-            log.error(MessageFormat.format(
-                    "{0} thrown while instantiating {1} of type {2} with message {3}",
-                    ClassNotFoundException.class.getName(),
-                    GuiceInjectorFactory.class.getName(),
-                    className, e.getMessage()), e);
-            throw new RuntimeException(e);
+            if (log.isDebugEnabled())
+                log.debug(MessageFormat.format("Instantiating {0} of type {1}", GuiceInjectorFactory.class.getName(),
+                        className));
+            GuiceInjectorFactory factory = GuiceUtils.createClass(className, GuiceInjectorFactory.class);
+            injector = factory.getInjector(servletContext);
+        } catch (CreateClassException e) {
+            String message = MessageFormat.format("Exception thrown while initializing Injector in {0}: {1}", GuiceContextListener.class.getName(), e.getMessage());
+            log.error(message, e);
+            throw new RuntimeException(message, e);
         }
     }
 
@@ -112,11 +99,10 @@ public class GuiceContextListener implements ServletContextListener {
      * @return
      */
     public static Injector getInjector() {
-        return injectorSet.iterator().next();
+        return injector;
     }
 
-
     public void contextDestroyed(ServletContextEvent servletContextEvent) {
-        injectorSet.clear();
+        injector = null;
     }
 }
