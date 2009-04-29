@@ -11,7 +11,7 @@
     <dependency>
         <groupId>com.silvermindsoftware.stripes</groupId>
         <artifactId>stripes-guice</artifactId>
-        <version>1.5-SNAPSHOT</version>
+        <version>1.5.0</version>
         <scope>compile</scope>
     </dependency>
 ...
@@ -22,8 +22,9 @@
     <repository>
         <id>silvermindsoftware.repo</id>
         <name>Silvermind Software Release Repo</name>
-        <url>http://m2.silvermindsoftware.com/repo/</url>
+        <url>http://www.silvermindsoftware.com/archiva/repository/internal/</url>
         <releases>
+            <enabled>true</enabled>
             <checksumPolicy>fail</checksumPolicy>
             <updatePolicy>never</updatePolicy>
         </releases>
@@ -34,9 +35,9 @@
     <repository>
         <id>silvermindsoftware.snapshot</id>
         <name>Silvermind Software Snapshot Repo</name>
-        <url>http://m2.silvermindsoftware.com/snapshot/</url>
+        <url>http://www.silvermindsoftware.com/archiva/repository/snapshots/</url>
         <releases>
-			<enabled>false</enabled>
+            <enabled>false</enabled>
             <checksumPolicy>fail</checksumPolicy>
         </releases>
         <snapshots>
