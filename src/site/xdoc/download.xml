@@ -22,7 +22,7 @@
     <repository>
         <id>silvermindsoftware.repo</id>
         <name>Silvermind Software Release Repo</name>
-        <url>http://www.silvermindsoftware.com/archiva/repository/internal/</url>
+        <url>http://www.silvermindsoftware.com/nexus/content/repositories/releases/</url>
         <releases>
             <enabled>true</enabled>
             <checksumPolicy>fail</checksumPolicy>
@@ -35,7 +35,7 @@
     <repository>
         <id>silvermindsoftware.snapshot</id>
         <name>Silvermind Software Snapshot Repo</name>
-        <url>http://www.silvermindsoftware.com/archiva/repository/snapshots/</url>
+        <url>http://www.silvermindsoftware.com/nexus/content/repositories/snapshots/</url>
         <releases>
             <enabled>false</enabled>
             <checksumPolicy>fail</checksumPolicy>
