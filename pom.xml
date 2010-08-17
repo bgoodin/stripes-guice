@@ -18,13 +18,15 @@
       <distribution>repo,manual</distribution>
     </license>
   </licenses>
-  <url>http://www.silvermindsoftware.com/stripes/guice/</url>
+  <url>http://bgoodin.github.com/stripes-guice/</url>
   <description>
     Stripes-Guice is a small library/extension that brings Guice DI functionality to the Stripes web framework. It
     provides a means to initialize Guice modules and inject Stripes ActionBeans, ActionBeanContexts, and more.
   </description>
   <scm>
-    <url>scm:git:git://github.com/bgoodin/stripes-guice</url>
+    <url>http://github.com/bgoodin/stripes-guice</url>
+    <connection>scm:git:git@github.com:bgoodin/stripes-guice.git</connection>
+    <developerConnection>scm:git:git@github.com:bgoodin/stripes-guice.git</developerConnection>	
   </scm>
   <developers>
     <developer>

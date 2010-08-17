@@ -16,41 +16,11 @@
     </dependency>
 ...
 </dependencies>
-
-<repositories>
-...
-    <repository>
-        <id>silvermindsoftware.repo</id>
-        <name>Silvermind Software Release Repo</name>
-        <url>http://m2.silvermindsoftware.com/repo/</url>
-        <releases>
-            <enabled>true</enabled>
-            <checksumPolicy>fail</checksumPolicy>
-            <updatePolicy>never</updatePolicy>
-        </releases>
-        <snapshots>
-            <enabled>false</enabled>
-        </snapshots>
-    </repository>
-    <repository>
-        <id>silvermindsoftware.snapshot</id>
-        <name>Silvermind Software Snapshot Repo</name>
-        <url>http://m2.silvermindsoftware.com/snapshot/</url>
-        <releases>
-            <enabled>false</enabled>
-            <checksumPolicy>fail</checksumPolicy>
-        </releases>
-        <snapshots>
-            <enabled>true</enabled>
-        </snapshots>
-    </repository>
-...
-</repositories>        
 ]]>
             </source>
         </section>
         <section name="Download Distribution">
-            <a href="../stripesguice-dist/">Download Distribution Archive</a>
+            <a href="http://github.com/bgoodin/stripes-guice/downloads">Download Distribution Archive</a>
         </section>
     </body>
 </document>
