@@ -1,0 +1,251 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Stripes-Guice - </title>
+    <style type="text/css" media="all">
+      @import url("./css/maven-base.css");
+      @import url("./css/maven-theme.css");
+      @import url("./css/site.css");
+    </style>
+    <link rel="stylesheet" href="./css/print.css" type="text/css" media="print" />
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+      </head>
+  <body class="composite">
+    <div id="banner">
+                    <span id="bannerLeft">
+    
+            stripes-guice
+    
+            </span>
+                    <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="breadcrumbs">
+          
+  
+
+  
+    
+  
+  
+    
+            <div class="xleft">
+        Last Published: 2010-08-17
+                      </div>
+            <div class="xright">      
+  
+
+  
+    
+  
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    <div id="leftColumn">
+      <div id="navcolumn">
+           
+  
+
+  
+    
+  
+  
+    
+                   <h5>Stripes-Guice</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="index.html">Overview</a>
+          </li>
+              
+    <li class="none">
+                    <a href="download.html">Download</a>
+          </li>
+              
+    <li class="none">
+              <strong>How To Use</strong>
+        </li>
+              
+    <li class="none">
+                    <a href="apidocs/index.html">Javadocs</a>
+          </li>
+          </ul>
+              <h5>Project Information</h5>
+            <ul>
+              
+    <li class="none">
+                    <a href="project-summary.html">Project Summary</a>
+          </li>
+              
+    <li class="none">
+                    <a href="dependencies.html">Dependencies</a>
+          </li>
+              
+    <li class="none">
+                    <a href="license.html">License</a>
+          </li>
+              
+    <li class="none">
+                    <a href="source-repository.html">Github</a>
+          </li>
+              
+    <li class="none">
+                    <a href="surefire-report.html">Test Report</a>
+          </li>
+              
+    <li class="none">
+                    <a href="team-list.html">Team</a>
+          </li>
+          </ul>
+                                           <a href="http://maven.apache.org/" title="Built by Maven" class="poweredBy">
+            <img alt="Built by Maven" src="./images/logos/maven-feather.png"></img>
+          </a>
+                       
+  
+
+  
+    
+  
+  
+    
+        </div>
+    </div>
+    <div id="bodyColumn">
+      <div id="contentBox">
+        <div class="section"><h2><a name="Configuring_Stripes-Guice"></a>Configuring Stripes-Guice</h2>
+<div class="section"><h3><a name="Basic"></a>Basic</h3>
+<div><p>
+                        Configure your web.xml to use the GuiceContextListener provided in Stripes-Guice.
+                    </p>
+<div class="source"><pre>
+                        
+&lt;listener&gt;
+    &lt;listener-class&gt;
+        com.silvermindsoftware.stripes.integration.guice.GuiceContextListener
+    &lt;/listener-class&gt;
+&lt;/listener&gt;
+                        
+                    </pre>
+</div>
+<p>
+                        After the listener is configured add a context-param named Guice.Modules and provide a
+                        comma-delimited fully qualified guice module class names.
+                    </p>
+<div class="source"><pre>
+                    
+&lt;context-param&gt;
+    &lt;param-name&gt;Guice.Modules&lt;/param-name&gt;
+    &lt;param-value&gt;com.myapp.guice.MyServiceModule,com.myapp.guice.MyWebModule&lt;/param-value&gt;
+&lt;/context-param&gt;
+                    
+                    </pre>
+</div>
+<p>
+                        Finally you need to configure stripes to make use of the GuiceActionResolver, GuiceActionBeanContextFactory, and GuiceRuntimeConfiguration.
+                        This will provide your ActionBeans, ActionBeanContext, and Interceptors with full Guice constructor and member injection support. All you
+                        need to do is add the following configurations to Stripes and annotate your classes as you would any other Guice injectable class.
+                    </p>
+<p><strong>
+                            NOTE: If you already have an implementation of these classes you can change the classes your implementation extend to extend the
+                            Stripes-Guice implementations. This is not an ideal approach. But, it will maintain the most consistent feature support across
+                            Stripes 1.5 and 1.6.
+                        </strong></p>
+<div class="source"><pre>
+                    
+&lt;filter&gt;
+    &lt;display-name&gt;Stripes Filter&lt;/display-name&gt;
+    &lt;filter-name&gt;StripesFilter&lt;/filter-name&gt;
+    &lt;filter-class&gt;net.sourceforge.stripes.controller.StripesFilter&lt;/filter-class&gt;
+    ...
+    &lt;init-param&gt;
+        &lt;param-name&gt;Configuration.Class&lt;/param-name&gt;
+        &lt;param-value&gt;com.silvermindsoftware.stripes.config.GuiceRuntimeConfiguration&lt;/param-value&gt;
+    &lt;/init-param&gt;
+    &lt;init-param&gt;
+        &lt;param-name&gt;ActionBeanContextFactory.Class&lt;/param-name&gt;
+        &lt;param-value&gt;com.silvermindsoftware.stripes.controller.GuiceActionBeanContextFactory&lt;/param-value&gt;
+    &lt;/init-param&gt;
+    &lt;init-param&gt;
+        &lt;param-name&gt;ActionResolver.Class&lt;/param-name&gt;
+        &lt;param-value&gt;com.silvermindsoftware.stripes.controller.GuiceActionResolver&lt;/param-value&gt;
+    &lt;/init-param&gt;
+    ...
+&lt;/filter&gt;
+                    
+                    </pre>
+</div>
+</div></div>
+<div class="section"><h3><a name="Implement_Custom_GuiceInjectorFactory"></a>Implement Custom GuiceInjectorFactory</h3>
+<div>
+                    If you do not want to use the Default means of creating the Guice Injector you can override it by implementing
+                    your own GuiceInjectorFactory.
+                </div><div>
+                    First, write your own implementation of the GuiceInjectorFactory. In the following example the implementation
+                    hard codes the Modules instead of using the default mechanism of Guice.Modules context-param. It also passes
+                    the created injector into a static context that can be exposed to non-stripes components. This should be an unusual
+                    case. But, the need may arise.
+                </div><div class="source"><pre>
+public class CustomInjectorFactory implements GuiceInjectorFactory {
+    @Override
+    public Injector getInjector(ServletContext servletContext) {
+        Injector injector = Guice.createInjector(new MyServiceModule(), new MyWebModule());
+        SomeStaticContextToExposeToSomewhereElse.init(injector);
+        return injector;
+    }
+}
+                </pre>
+</div>
+<div>
+                    Next and finally, specify your custom implementation in a GuiceInjectorFactory.Class context-param.
+                </div><div class="source"><pre>
+                
+&lt;context-param&gt;
+    &lt;param-name&gt;GuiceInjectorFactory.Class&lt;/param-name&gt;
+    &lt;param-value&gt;com.myapp.guice.CustomInjectorFactory&lt;/param-value&gt;
+&lt;/context-param&gt;
+                
+                </pre>
+</div>
+</div>
+</div>
+
+      </div>
+    </div>
+    <div class="clear">
+      <hr/>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2010
+    
+          
+  
+
+  
+    
+  
+  
+    
+  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+  </body>
+</html>

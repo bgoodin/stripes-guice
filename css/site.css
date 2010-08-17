@@ -1,0 +1,28 @@
+#banner {
+    padding: 20px;
+    background-color: #C3D9FF;
+    border-bottom: 1px solid #3D3B3A;
+    font-size: 48px;
+    color: #000000;
+}
+
+#breadcrumbs {
+    background-color: #FFFFFF;
+    border-top: 0;
+    border-bottom: 1px solid black;
+}
+
+#leftColumn {
+    background-color: #FFFFFF;
+    border: 0;
+}
+
+h2 {
+    background-color:#918B87;
+    border: 0;
+    color:#FFFFFF;
+    font-size:x-large;
+    font-weight:900;
+    padding:4px 4px 4px 6px;
+}
+

@@ -1,0 +1,3 @@
+com.silvermindsoftware.stripes.config
+com.silvermindsoftware.stripes.controller
+com.silvermindsoftware.stripes.integration.guice

@@ -71,12 +71,12 @@
             <ul>
               
     <li class="none">
-              <strong>Overview</strong>
-        </li>
+                    <a href="index.html">Overview</a>
+          </li>
               
     <li class="none">
-                    <a href="download.html">Download</a>
-          </li>
+              <strong>Download</strong>
+        </li>
               
     <li class="none">
                     <a href="howto.html">How To Use</a>
@@ -128,29 +128,25 @@
     </div>
     <div id="bodyColumn">
       <div id="contentBox">
-        <div class="section"><h2><a name="News"></a>News</h2>
-<ul><li>August 17, 2010 - Moved to Github</li>
-<li>April 29, 2009 - Stripes Guice 1.5.0 released.</li>
-</ul>
+        <div class="section"><h2><a name="Maven_2"></a>Maven 2</h2>
+<div>Configure a dependency in your pom for ${pom.artifactId} and add the Silver Mind Software release and snapshot repos.</div><div class="source"><pre>
+
+&lt;dependencies&gt;
+...
+    &lt;dependency&gt;
+        &lt;groupId&gt;com.silvermindsoftware.stripes&lt;/groupId&gt;
+        &lt;artifactId&gt;stripes-guice&lt;/artifactId&gt;
+        &lt;version&gt;1.5.0&lt;/version&gt;
+        &lt;scope&gt;compile&lt;/scope&gt;
+    &lt;/dependency&gt;
+...
+&lt;/dependencies&gt;
+
+            </pre>
 </div>
-<div class="section"><h2><a name="Overview"></a>Overview</h2>
-<div>
-            Stripes-Guice is a small library/extension that brings Guice DI
-            functionality to the Stripes web framework. It provides a means
-            to initialize Guice modules and inject Stripes ActionBeans,
-            ActionBeanContexts, and more.
-        </div></div>
-<div class="section"><h2><a name="Features"></a>Features</h2>
-<ul><li>Initialization of Guice Modules via a ServletContextListener named GuiceContextListener.</li>
-<li>Inject constructors and members on ActionBeans, ActionBeanContext, and Interceptors using standard Guice mechanisms.</li>
-<li>Ability to provide custom means of retrieving Guice Injector through a custom GuiceInjectorFactory.</li>
-</ul>
 </div>
-<div class="section"><h2><a name="Planned_Features"></a>Planned Features</h2>
-<ul><li>Support for Constructor/Member injection of ConfigurableComponents being contemplated.</li>
-<li>Support for Stripes 1.6</li>
-</ul>
-</div>
+<div class="section"><h2><a name="Download_Distribution"></a>Download Distribution</h2>
+<a href="http://github.com/bgoodin/stripes-guice/downloads" class="externalLink">Download Distribution Archive</a></div>
 
       </div>
     </div>
