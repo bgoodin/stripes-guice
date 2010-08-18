@@ -13,7 +13,7 @@ h3. Prerequisites
 * Install/Configure GPG - The artifacts that are deployed to the central maven repositories need to be signed.  To do this you will need to have a public and private keypair.  There is a very good guide [http://www.sonatype.com/people/2010/01/how-to-generate-pgp-signatures-with-maven/] that will walk you through this.
 * JDK 5+ is installed on your command line path.
 * Install Maven 2.2.1 or higher.  2.2.0 has a bug that will produce invalid checksums.
-* Subversion 1.5+ is installed on your command line path. For more information, please refer to http://subversion.apache.org/.
+* git is installed on your command line path. For more information, please refer to http://git-scm.com/.
 
 h3. Configuration
 
@@ -78,7 +78,7 @@ p. once the build is complete you can cd into the target directory and find the 
 
 bc. cd target
 
-p. if you have made any changes to the flexjson website you can unzip one of the distributions and copy the docs folder up to the sourceforge website
+p. you can upload the new distributions to the downloads section on github.
 
 h3. Additional Information
 
