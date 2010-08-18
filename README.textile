@@ -13,7 +13,7 @@ h3. Prerequisites
 * Install/Configure GPG - The artifacts that are deployed to the central maven repositories need to be signed.  To do this you will need to have a public and private keypair.  There is a very good "guide (click here)":http://www.sonatype.com/people/2010/01/how-to-generate-pgp-signatures-with-maven/ that will walk you through this.
 * JDK 5+ is installed on your command line path.
 * Install Maven 2.2.1 or higher.  2.2.0 has a bug that will produce invalid checksums.
-* git is installed on your command line path. For more information, please refer to "the git webite":http://git-scm.com/.
+* git is installed on your command line path. For more information, please refer to "the git website":http://git-scm.com/.
 
 h3. Configuration
 
@@ -81,7 +81,7 @@ p. you can upload the new distributions to the downloads section on github.
 
 h3. Additional Information
 
-p. Actual preparation for setting up a Sonatype repository for syncing with the Maven Centeral repository. This has already been handled but it is good information in order to undestand the bigger picture.
+p. Actual preparation for setting up a Sonatype repository for syncing with the Maven Centeral repository. This has already been handled but it is good information in order to understand the bigger picture.
 
 "Sonatype OSS Maven Repository Usage Guide":https://docs.sonatype.org/display/Repository/Sonatype+OSS+Maven+Repository+Usage+Guide
 
