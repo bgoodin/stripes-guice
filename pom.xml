@@ -9,7 +9,7 @@
   <groupId>com.silvermindsoftware.stripes</groupId>
   <artifactId>stripes-guice</artifactId>
   <packaging>jar</packaging>
-  <version>1.5.0</version>
+  <version>1.5.0-SNAPSHOT</version>
   <name>stripes-guice</name>
   <licenses>
     <license>
