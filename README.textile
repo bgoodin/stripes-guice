@@ -2,7 +2,7 @@ h2. learn about stripes-guice
 
 p. "stripes-guice website":http://bgoodin.github.com/stripes-guice
 
-h2. FOR COLABORATORS - Deploying stripes-guice release
+h2. FOR COLLABORATORS - Deploying stripes-guice release
 
 h3. Introduction
 
