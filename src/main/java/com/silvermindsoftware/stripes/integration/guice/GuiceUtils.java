@@ -13,7 +13,7 @@ public class GuiceUtils {
     }
 
     public static String[] splitClasses(String moduleClasses) {
-        return moduleClasses.split(",");
+        return moduleClasses != null ? moduleClasses.split(",") : new String[0];
     }
 
     public static <T> T createClass(String className, Class<T> targetType) throws CreateClassException {

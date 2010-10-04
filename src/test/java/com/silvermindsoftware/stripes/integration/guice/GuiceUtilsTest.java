@@ -3,6 +3,7 @@ package com.silvermindsoftware.stripes.integration.guice;
 import com.google.common.base.Joiner;
 import com.google.common.collect.Lists;
 import com.google.inject.Injector;
+import com.silvermindsoftware.stripes.guice.InjectorHelper;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -47,7 +48,7 @@ public class GuiceUtilsTest {
 
     @Test
     public void testIllegalAccessException() throws Exception {
-        failWithParams(TimeUnit.class.getName(), TimeUnit.class);
+        failWithParams(InjectorHelper.class.getName(), InjectorHelper.class);
     }
 
     @Test

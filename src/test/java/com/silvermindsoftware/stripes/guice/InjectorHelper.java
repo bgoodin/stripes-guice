@@ -7,6 +7,10 @@ public class InjectorHelper {
     private Injector injector;
     private static InjectorHelper helper;
 
+    private InjectorHelper() {
+        this.injector = null;
+    }
+
     private InjectorHelper(Injector injector) {
         this.injector = injector;
     }

@@ -1,5 +1,7 @@
 package com.silvermindsoftware.stripes.tests;
 
+import com.silvermindsoftware.stripes.guice.TestGuiceInjectorFactory;
+import com.silvermindsoftware.stripes.guice.TestModule;
 import com.silvermindsoftware.stripes.integration.guice.GuiceContextListener;
 import net.sourceforge.stripes.mock.MockServletContext;
 import org.junit.Rule;
@@ -26,7 +28,7 @@ public class StripesGuiceFailTest {
         mockServletContext.addInitParameter(GUICE_MODULES_PARAM,
             "com.silvermindsoftware.stripes.guice.IDontExistModule");
         mockServletContext.addInitParameter(GUICE_INJECTOR_FACTORY_CLASS_NAME,
-            "com.silvermindsoftware.stripes.guice.TestGuiceInjectorFactory");
+            TestGuiceInjectorFactory.class.getName());
 
         final ServletContextEvent servletContextEvent = new ServletContextEvent(mockServletContext);
         final GuiceContextListener contextListener = new GuiceContextListener();
@@ -41,7 +43,7 @@ public class StripesGuiceFailTest {
         thrown.expectMessage(expectedException);
 
         final MockServletContext mockServletContext = new MockServletContext("web");
-        mockServletContext.addInitParameter(GUICE_MODULES_PARAM, "com.silvermindsoftware.stripes.guice.TestModule");
+        mockServletContext.addInitParameter(GUICE_MODULES_PARAM, TestModule.class.getName());
         mockServletContext.addInitParameter(GUICE_INJECTOR_FACTORY_CLASS_NAME,
             "com.silvermindsoftware.stripes.guice.IDontExistGuiceInjectorFactory");
 

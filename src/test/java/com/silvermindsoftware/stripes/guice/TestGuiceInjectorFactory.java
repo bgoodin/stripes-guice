@@ -9,7 +9,7 @@ import javax.servlet.ServletContext;
 public class TestGuiceInjectorFactory extends DefaultGuiceInjectorFactory implements GuiceInjectorFactory {
 
     public Injector getInjector(ServletContext servletContext) {
-        Injector injector = super.getInjector(servletContext);
+        final Injector injector = super.getInjector(servletContext);
         InjectorHelper.init(injector);
         return injector;
     }
