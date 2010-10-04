@@ -5,17 +5,20 @@ import java.text.MessageFormat;
 public class GuiceUtils {
 
     public static final String GUICE_MODULES_PARAM = "Guice.Modules";
-    public static String GUICE_INJECTOR_FACTORY_CLASS_NAME = "GuiceInjectorFactory.Class";
-    public static String DEFAULT_GUICE_INJECTOR_FACTORY_CLASS_NAME = "com.silvermindsoftware.stripes.integration.guice.DefaultGuiceInjectorFactory";
+    public static final String GUICE_INJECTOR_FACTORY_CLASS_NAME = "GuiceInjectorFactory.Class";
+    public static final String DEFAULT_GUICE_INJECTOR_FACTORY_CLASS_NAME = DefaultGuiceInjectorFactory.class.getName();
+
+    private GuiceUtils() {
+        throw new IllegalAccessError("Don't call constructor on util");
+    }
 
     public static String[] splitClasses(String moduleClasses) {
         return moduleClasses.split(",");
     }
 
-    @SuppressWarnings("unchecked")
     public static <T> T createClass(String className, Class<T> targetType) throws CreateClassException {
         try {
-            return (T) Class.forName(className).newInstance();
+            return targetType.cast(Class.forName(className.trim()).newInstance());
         } catch (ClassCastException e) {
             throw wrapToCreateClassExcpetion(e, className);
         } catch (ClassNotFoundException e) {
@@ -29,7 +32,9 @@ public class GuiceUtils {
 
     private static CreateClassException wrapToCreateClassExcpetion(Exception e, String className) {
         return new CreateClassException(MessageFormat.format(
-                "{0} thrown during instantiation of {1} with message {2}", e.getClass().getName(), className, e.getMessage()), e);
+            "{0} thrown during instantiation of {1} with message {2}",
+            e.getClass().getName(),
+            className,
+            e.getMessage()), e);
     }
-
 }
