@@ -6,9 +6,4 @@ public class CreateClassException extends RuntimeException {
     public CreateClassException(String message, Throwable cause) {
         super(message, cause);
     }
-
-    public CreateClassException(String message) {
-        super(message);
-    }
-
 }

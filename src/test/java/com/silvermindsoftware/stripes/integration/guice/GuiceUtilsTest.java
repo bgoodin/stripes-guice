@@ -3,12 +3,12 @@ package com.silvermindsoftware.stripes.integration.guice;
 import com.google.common.base.Joiner;
 import com.google.common.collect.Lists;
 import com.google.inject.Injector;
-import com.google.inject.util.Modules;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -47,7 +47,7 @@ public class GuiceUtilsTest {
 
     @Test
     public void testIllegalAccessException() throws Exception {
-        failWithParams(Modules.class.getName(), GuiceUtils.class);
+        failWithParams(TimeUnit.class.getName(), TimeUnit.class);
     }
 
     @Test
