@@ -36,6 +36,12 @@
       <organization>Silver Mind Software</organization>
       <organizationUrl>http://www.silvermindsoftware.com</organizationUrl>
     </developer>
+    <developer>
+      <id>h3adache</id>
+      <name>Tim Chen</name>
+      <url>http://www.linkedin.com/in/chengt</url>
+      <email>chengt at chengin dot com</email>
+    </developer>
   </developers>
   <dependencies>
 
