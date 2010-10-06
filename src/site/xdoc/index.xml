@@ -4,6 +4,7 @@
 <body>
     <section name="News">
         <ul>
+          <li>October 5, 2010 - Deployed Stripes Guice 1.5.1: Cleaned up codebase and minor bug fixes. Thanks <a href="http://github.com/h3adache">Tim</a>!</li>
           <li>August 17, 2010 - Moved to Github</li>
           <li>April 29, 2009 - Stripes Guice 1.5.0 released.</li> 
         </ul>

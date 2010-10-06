@@ -11,7 +11,7 @@
     <dependency>
         <groupId>com.silvermindsoftware.stripes</groupId>
         <artifactId>stripes-guice</artifactId>
-        <version>1.5.0</version>
+        <version>1.5.1</version>
         <scope>compile</scope>
     </dependency>
 ...
