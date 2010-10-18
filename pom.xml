@@ -64,7 +64,7 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>com.google.code.guice</groupId>
+            <groupId>com.google.inject</groupId>
             <artifactId>guice</artifactId>
             <version>1.0</version>
             <scope>compile</scope>
