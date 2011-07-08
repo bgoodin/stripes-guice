@@ -1,5 +1,6 @@
 package com.silvermindsoftware.sg.controller;
 
+import com.google.inject.Inject;
 import com.google.inject.Injector;
 import net.sourceforge.stripes.action.ActionBeanContext;
 import net.sourceforge.stripes.config.Configuration;
@@ -8,7 +9,6 @@ import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
