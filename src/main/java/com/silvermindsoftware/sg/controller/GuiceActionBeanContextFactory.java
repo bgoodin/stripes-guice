@@ -26,16 +26,18 @@ public class GuiceActionBeanContextFactory extends DefaultActionBeanContextFacto
     public void init(@NotNull Configuration aConfiguration) throws Exception {
         setConfiguration(aConfiguration);
 
-        Class<? extends ActionBeanContext> myClass =
-            aConfiguration.getBootstrapPropertyResolver().getClassProperty(CONTEXT_CLASS_NAME, ActionBeanContext.class);
-
-        if (myClass == null) {
-            myClass = ActionBeanContext.class;
-        } else {
-            LOGGER.info("Will use {} subclass {}", ActionBeanContext.class.getSimpleName(), myClass.getName());
-        }
+        final Class<? extends ActionBeanContext> myClass = getActionBeanClass(aConfiguration);
+        LOGGER.info("Will use {} subclass {}", ActionBeanContext.class.getSimpleName(), myClass.getName());
 
         this.theContextClass = myClass;
+    }
+
+    @NotNull
+    private Class<? extends ActionBeanContext> getActionBeanClass(@NotNull Configuration aConfiguration) {
+        final Class<? extends ActionBeanContext> myClass =
+            aConfiguration.getBootstrapPropertyResolver().getClassProperty(CONTEXT_CLASS_NAME, ActionBeanContext.class);
+
+        return (myClass == null) ? ActionBeanContext.class : myClass;
     }
 
     @NotNull
