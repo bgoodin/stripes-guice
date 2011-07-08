@@ -28,11 +28,13 @@
         <stripes.version>1.5.6</stripes.version>
         <guava.version>r08</guava.version>
         <guice.version>3.0</guice.version>
-        <slf4j-api.version>1.6.1</slf4j-api.version>
+        <slf4j-api.version>1.5.11</slf4j-api.version>
         <jsp-api.version>2.0</jsp-api.version>
         <servlet-api.version>2.5</servlet-api.version>
         <jstl.version>1.2</jstl.version>
         <junit.version>4.8.2</junit.version>
+        <annotations.version>9.0.4</annotations.version>
+        <logback-classic.version>0.9.19</logback-classic.version>
     </properties>
 
     <licenses>
@@ -76,14 +78,29 @@
             <version>${stripes.version}</version>
         </dependency>
         <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>
+        <dependency>
             <groupId>com.google.inject</groupId>
             <artifactId>guice</artifactId>
+            <version>${guice.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.inject.extensions</groupId>
+            <artifactId>guice-servlet</artifactId>
             <version>${guice.version}</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>${slf4j-api.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.intellij</groupId>
+            <artifactId>annotations</artifactId>
+            <version>${annotations.version}</version>
         </dependency>
 
         <!-- PROVIDED -->
@@ -113,11 +130,13 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- RUNTIME -->
         <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
-            <scope>test</scope>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback-classic.version}</version>
+            <scope>runtime</scope>
         </dependency>
     </dependencies>
 
