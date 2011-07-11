@@ -8,15 +8,15 @@
                     <p>
                         Configure your web.xml to use the GuiceContextListener provided in Stripes-Guice.
                     </p>
-                    <source>
+                    <source><![CDATA[<![CDATA[
                         <![CDATA[
 <listener>
     <listener-class>
-        com.silvermindsoftware.stripes.integration.guice.GuiceContextListener
+        com.silvermindsoftware.sg.context.GuiceContextListener
     </listener-class>
 </listener>
                         ]]>
-                    </source>
+                    ]]>]]></source>
                     <p>
                         After the listener is configured add a context-param named Guice.Modules and provide a
                         comma-delimited fully qualified guice module class names.
@@ -41,7 +41,7 @@
                             Stripes 1.5 and 1.6.
                         </strong>
                     </p>
-                    <source>
+                    <source><![CDATA[<![CDATA[<![CDATA[
                     <![CDATA[
 <filter>
     <display-name>Stripes Filter</display-name>
@@ -50,20 +50,19 @@
     ...
     <init-param>
         <param-name>Configuration.Class</param-name>
-        <param-value>com.silvermindsoftware.stripes.config.GuiceRuntimeConfiguration</param-value>
+        <parcom.silvermindsoftware.sg.stripese.stripes.config.GuiceRuntimeConfiguration</param-value>
     </init-param>
     <init-param>
         <param-name>ActionBeanContextFactory.Class</param-name>
-        <param-value>com.silvermindsoftware.stripes.controller.GuiceActionBeanContextFactory</param-value>
+        <param-value>com.silvermindsoftware.sg.stripes.controller.GuiceActionBeanContextFactory</param-value>
     </init-param>
     <init-param>
-        <param-name>ActionResolver.Class</param-name>
-        <param-value>com.silvermindsoftware.stripes.controller.GuiceActionResolver</param-value>
+        <param-name>ActionResolver.Class</param-namcom.silvermindsoftware.sg.stripeslvermindsoftware.stripes.controller.GuiceActionResolver</param-value>
     </init-param>
     ...
 </filter>
                     ]]>
-                    </source>
+                    ]]>]]>]]></source>
                 </div>
             </subsection>
             <subsection name="Implement Custom GuiceInjectorFactory">
