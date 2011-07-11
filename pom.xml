@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
@@ -9,14 +10,31 @@
 
     <groupId>com.silvermindsoftware.stripes</groupId>
     <artifactId>stripes-guice</artifactId>
-    <packaging>jar</packaging>
-    <version>1.5.3-SNAPSHOT</version>
+    <version>3.0-SNAPSHOT</version>
+
     <name>stripes-guice</name>
+    <url>http://bgoodin.github.com/stripes-guice/</url>
+    <description>
+        Stripes-Guice is a small library/extension that brings Guice DI functionality to the Stripes web framework. It
+        provides a means to initialize Guice modules and inject Stripes ActionBeans, ActionBeanContexts, and more.
+    </description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.6</maven.compiler.source>
         <maven.compiler.target>1.6</maven.compiler.target>
+
+        <!-- dependency versions -->
+        <stripes.version>1.5.6</stripes.version>
+        <guava.version>r08</guava.version>
+        <guice.version>3.0</guice.version>
+        <slf4j-api.version>1.5.11</slf4j-api.version>
+        <jsp-api.version>2.0</jsp-api.version>
+        <servlet-api.version>2.5</servlet-api.version>
+        <jstl.version>1.2</jstl.version>
+        <junit.version>4.8.2</junit.version>
+        <annotations.version>9.0.4</annotations.version>
+        <logback-classic.version>0.9.19</logback-classic.version>
     </properties>
 
     <licenses>
@@ -27,11 +45,6 @@
         </license>
     </licenses>
 
-    <url>http://bgoodin.github.com/stripes-guice/</url>
-    <description>
-        Stripes-Guice is a small library/extension that brings Guice DI functionality to the Stripes web framework. It
-        provides a means to initialize Guice modules and inject Stripes ActionBeans, ActionBeanContexts, and more.
-    </description>
 
     <scm>
         <url>http://github.com/bgoodin/stripes-guice</url>
@@ -51,48 +64,62 @@
         <developer>
             <id>h3adache</id>
             <name>Tim Chen</name>
-            <url>http://www.linkedin.com/in/chengt</url>
+            <url>http://www.chengin.com</url>
             <email>chengt at chengin dot com</email>
         </developer>
     </developers>
+
+
     <dependencies>
         <!-- REQUIRED -->
         <dependency>
             <groupId>net.sourceforge.stripes</groupId>
             <artifactId>stripes</artifactId>
-            <version>1.5.2</version>
-            <scope>compile</scope>
+            <version>${stripes.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
         </dependency>
         <dependency>
             <groupId>com.google.inject</groupId>
             <artifactId>guice</artifactId>
-            <version>1.0</version>
-            <scope>compile</scope>
+            <version>${guice.version}</version>
         </dependency>
         <dependency>
-            <groupId>commons-logging</groupId>
-            <artifactId>commons-logging</artifactId>
-            <version>1.1.1</version>
-            <scope>compile</scope>
+            <groupId>com.google.inject.extensions</groupId>
+            <artifactId>guice-servlet</artifactId>
+            <version>${guice.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j-api.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.intellij</groupId>
+            <artifactId>annotations</artifactId>
+            <version>${annotations.version}</version>
         </dependency>
 
         <!-- PROVIDED -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jsp-api</artifactId>
-            <version>2.0</version>
+            <version>${jsp-api.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
-            <version>2.5</version>
+            <version>${servlet-api.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
-            <version>1.2</version>
+            <version>${jstl.version}</version>
             <scope>provided</scope>
         </dependency>
 
@@ -100,16 +127,17 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.8.1</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>r06</version>
+            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
 
+        <!-- RUNTIME -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback-classic.version}</version>
+            <scope>runtime</scope>
+        </dependency>
     </dependencies>
 
     <reporting>
@@ -117,7 +145,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-report-plugin</artifactId>
-                <version>2.5</version>
             </plugin>
         </plugins>
     </reporting>
@@ -126,34 +153,7 @@
         <finalName>stripes-guice</finalName>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.7</version>
-                <executions>
-                    <execution>
-                        <id>attach-javadocs</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <version>2.1.2</version>
-                <executions>
-                    <execution>
-                        <id>attach-sources</id>
-                        <goals>
-                            <goal>jar-no-fork</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
-                <version>2.2-beta-5</version>
                 <configuration>
                     <descriptors>
                         <descriptor>src/assembly/descriptor.xml</descriptor>
@@ -163,7 +163,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.4.3</version>
                 <configuration>
                     <excludes>
                         <exclude>com/silvermindsoftware/stripes/app/**/*</exclude>
