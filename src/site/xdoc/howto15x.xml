@@ -2,19 +2,21 @@
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
     <body>
-        <section name="Configuring Stripes-Guice 3.x">
+        <section name="Configuring Stripes-Guice 1.5.x">
             <subsection name="Basic">
                 <div>
                     <p>
                         Configure your web.xml to use the GuiceContextListener provided in Stripes-Guice.
                     </p>
-                    <source><![CDATA[
+                    <source>
+                        <![CDATA[
 <listener>
     <listener-class>
-        com.silvermindsoftware.sg.context.GuiceContextListener
+        com.silvermindsoftware.stripes.integration.guice.GuiceContextListener
     </listener-class>
 </listener>
-                        ]]></source>
+                        ]]>
+                    </source>
                     <p>
                         After the listener is configured add a context-param named Guice.Modules and provide a
                         comma-delimited fully qualified guice module class names.
@@ -29,7 +31,7 @@
                     </source>
                     <p>
                         Finally you need to configure stripes to make use of the GuiceActionResolver, GuiceActionBeanContextFactory, and GuiceRuntimeConfiguration.
-                        This will provide your ActionBeans, ActionBeanContext, Interceptors, and ConfigurableComponents with full Guice constructor and member injection support. All you
+                        This will provide your ActionBeans, ActionBeanContext, and Interceptors with full Guice constructor and member injection support. All you
                         need to do is add the following configurations to Stripes and annotate your classes as you would any other Guice injectable class.
                     </p>
                     <p>
@@ -39,7 +41,8 @@
                             Stripes 1.5 and 1.6.
                         </strong>
                     </p>
-                    <source><![CDATA[
+                    <source>
+                    <![CDATA[
 <filter>
     <display-name>Stripes Filter</display-name>
     <filter-name>StripesFilter</filter-name>
@@ -47,19 +50,20 @@
     ...
     <init-param>
         <param-name>Configuration.Class</param-name>
-        <parcom.silvermindsoftware.sg.config.GuiceRuntimeConfiguration</param-value>
+        <param-value>com.silvermindsoftware.stripes.config.GuiceRuntimeConfiguration</param-value>
     </init-param>
     <init-param>
         <param-name>ActionBeanContextFactory.Class</param-name>
-        <param-value>com.silvermindsoftware.sg.controller.GuiceActionBeanContextFactory</param-value>
+        <param-value>com.silvermindsoftware.stripes.controller.GuiceActionBeanContextFactory</param-value>
     </init-param>
     <init-param>
         <param-name>ActionResolver.Class</param-name>
-        <param-value>com.silvermindsoftware.sg.GuiceActionResolver</param-value>
+        <param-value>com.silvermindsoftware.stripes.controller.GuiceActionResolver</param-value>
     </init-param>
     ...
 </filter>
-                    ]]></source>
+                    ]]>
+                    </source>
                 </div>
             </subsection>
             <subsection name="Implement Custom GuiceInjectorFactory">

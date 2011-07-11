@@ -1,4 +1,4 @@
-h2. learn about stripes-guice
+h2. FOR DEVELOPERS - Learn about stripes-guice
 
 p. "stripes-guice website":http://bgoodin.github.com/stripes-guice
 
@@ -11,7 +11,7 @@ p. This page will guide the development team with setting up their environment t
 h3. Prerequisites
 
 * Install/Configure GPG - The artifacts that are deployed to the central maven repositories need to be signed.  To do this you will need to have a public and private keypair.  There is a very good "guide (click here)":http://www.sonatype.com/people/2010/01/how-to-generate-pgp-signatures-with-maven/ that will walk you through this.
-* JDK 5+ is installed on your command line path.
+* JDK 1.6+ is installed on your command line path.
 * Install Maven 2.2.1 or higher.  2.2.0 has a bug that will produce invalid checksums.
 * git is installed on your command line path. For more information, please refer to "the git website":http://git-scm.com/.
 

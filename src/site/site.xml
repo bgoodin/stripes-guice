@@ -7,7 +7,8 @@
         <menu name="Stripes-Guice">
             <item name="Overview" href="index.html"/>
             <item name="Download" href="download.html"/>
-            <item name="How To Use" href="howto.html"/>
+            <item name="How To Use (3.x)" href="howto.html"/>
+            <item name="How To Use (1.5.x)" href="howto15x.html"/>
             <item name="Javadocs" href="apidocs/index.html"/>
         </menu>
         <menu name="Project Information">

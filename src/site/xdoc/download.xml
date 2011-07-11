@@ -2,8 +2,28 @@
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
     <body>
-        <section name="Maven 2">
-            <div>Configure a dependency in your pom for ${pom.artifactId} and add the Silver Mind Software release and snapshot repos.</div>
+        <section name="Stripes Guice 3.x with Maven">
+            <source>
+<![CDATA[
+<dependencies>
+...
+    <dependency>
+        <groupId>com.silvermindsoftware.stripes</groupId>
+        <artifactId>stripes-guice</artifactId>
+        <version>3.0</version>
+        <scope>compile</scope>
+    </dependency>
+...
+    <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>[your preferred slf4j implementation]</artifactId>
+        <version>1.5.11</version>
+    </dependency>
+</dependencies>
+]]>
+            </source>
+        </section>
+        <section name="Stripes Guice 1.5.x with Maven">
             <source>
 <![CDATA[
 <dependencies>

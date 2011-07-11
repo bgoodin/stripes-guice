@@ -4,6 +4,14 @@
 <body>
     <section name="News">
         <ul>
+          <li>July 11, 2011 - Deployed Stripes Guice 3.0 (all thanks to <a href="https://github.com/h3adache">Tim Chen</a>)
+              <ul>
+                <li>Built on Guice 3.0</li>
+                <li>Added support for ConfigureableComponent injection</li>
+                <li>Optimized package names</li>
+                <li>Code was optimized and modernized</li>
+              </ul>
+          </li>
           <li>October 18, 2010 - Deployed Stripes Guice 1.5.2: Fixed dependency group for Guice</li>
           <li>October 5, 2010 - Deployed Stripes Guice 1.5.1: Cleaned up codebase and minor bug fixes. Thanks <a href="http://github.com/h3adache">Tim</a>!</li>
           <li>August 17, 2010 - Moved to Github</li>
@@ -21,13 +29,13 @@
     <section name="Features">
         <ul>
             <li>Initialization of Guice Modules via a ServletContextListener named GuiceContextListener.</li>
-            <li>Inject constructors and members on ActionBeans, ActionBeanContext, and Interceptors using standard Guice mechanisms.</li>
+            <li>Inject constructors and members on ActionBeans, ActionBeanContext, Interceptors, and ConfigurableComponents using standard Guice mechanisms.</li>
             <li>Ability to provide custom means of retrieving Guice Injector through a custom GuiceInjectorFactory.</li>
         </ul>
     </section>
     <section name="Planned Features">
         <ul>
-            <li>Support for Constructor/Member injection of ConfigurableComponents being contemplated.</li>
+            <li>Classes to aid in unit testing.</li>
             <li>Support for Stripes 1.6</li>
         </ul>
     </section>
