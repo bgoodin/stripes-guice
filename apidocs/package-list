@@ -1,3 +1,6 @@
-com.silvermindsoftware.stripes.config
-com.silvermindsoftware.stripes.controller
-com.silvermindsoftware.stripes.integration.guice
+com.silvermindsoftware.sg.config
+com.silvermindsoftware.sg.context
+com.silvermindsoftware.sg.controller
+com.silvermindsoftware.sg.exception
+com.silvermindsoftware.sg.guice
+com.silvermindsoftware.sg.utils

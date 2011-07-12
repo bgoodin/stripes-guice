@@ -79,12 +79,12 @@
           </li>
               
     <li class="none">
-              <strong>How To Use (3.x)</strong>
-        </li>
+                    <a href="howto.html">How To Use (3.x)</a>
+          </li>
               
     <li class="none">
-                    <a href="howto15x.html">How To Use (1.5.x)</a>
-          </li>
+              <strong>How To Use (1.5.x)</strong>
+        </li>
               
     <li class="none">
                     <a href="apidocs/index.html">Javadocs</a>
@@ -109,18 +109,20 @@
     </div>
     <div id="bodyColumn">
       <div id="contentBox">
-        <div class="section"><h2><a name="Configuring_Stripes-Guice_3.x"></a>Configuring Stripes-Guice 3.x</h2>
+        <div class="section"><h2><a name="Configuring_Stripes-Guice_1.5.x"></a>Configuring Stripes-Guice 1.5.x</h2>
 <div class="section"><h3><a name="Basic"></a>Basic</h3>
 <div><p>
                         Configure your web.xml to use the GuiceContextListener provided in Stripes-Guice.
                     </p>
 <div class="source"><pre>
+                        
 &lt;listener&gt;
     &lt;listener-class&gt;
-        com.silvermindsoftware.sg.context.GuiceContextListener
+        com.silvermindsoftware.stripes.integration.guice.GuiceContextListener
     &lt;/listener-class&gt;
 &lt;/listener&gt;
-                        </pre>
+                        
+                    </pre>
 </div>
 <p>
                         After the listener is configured add a context-param named Guice.Modules and provide a
@@ -137,7 +139,7 @@
 </div>
 <p>
                         Finally you need to configure stripes to make use of the GuiceActionResolver, GuiceActionBeanContextFactory, and GuiceRuntimeConfiguration.
-                        This will provide your ActionBeans, ActionBeanContext, Interceptors, and ConfigurableComponents with full Guice constructor and member injection support. All you
+                        This will provide your ActionBeans, ActionBeanContext, and Interceptors with full Guice constructor and member injection support. All you
                         need to do is add the following configurations to Stripes and annotate your classes as you would any other Guice injectable class.
                     </p>
 <p><strong>
@@ -146,6 +148,7 @@
                             Stripes 1.5 and 1.6.
                         </strong></p>
 <div class="source"><pre>
+                    
 &lt;filter&gt;
     &lt;display-name&gt;Stripes Filter&lt;/display-name&gt;
     &lt;filter-name&gt;StripesFilter&lt;/filter-name&gt;
@@ -153,18 +156,19 @@
     ...
     &lt;init-param&gt;
         &lt;param-name&gt;Configuration.Class&lt;/param-name&gt;
-        &lt;parcom.silvermindsoftware.sg.config.GuiceRuntimeConfiguration&lt;/param-value&gt;
+        &lt;param-value&gt;com.silvermindsoftware.stripes.config.GuiceRuntimeConfiguration&lt;/param-value&gt;
     &lt;/init-param&gt;
     &lt;init-param&gt;
         &lt;param-name&gt;ActionBeanContextFactory.Class&lt;/param-name&gt;
-        &lt;param-value&gt;com.silvermindsoftware.sg.controller.GuiceActionBeanContextFactory&lt;/param-value&gt;
+        &lt;param-value&gt;com.silvermindsoftware.stripes.controller.GuiceActionBeanContextFactory&lt;/param-value&gt;
     &lt;/init-param&gt;
     &lt;init-param&gt;
         &lt;param-name&gt;ActionResolver.Class&lt;/param-name&gt;
-        &lt;param-value&gt;com.silvermindsoftware.sg.GuiceActionResolver&lt;/param-value&gt;
+        &lt;param-value&gt;com.silvermindsoftware.stripes.controller.GuiceActionResolver&lt;/param-value&gt;
     &lt;/init-param&gt;
     ...
 &lt;/filter&gt;
+                    
                     </pre>
 </div>
 </div></div>
