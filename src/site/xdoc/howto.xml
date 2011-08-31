@@ -47,7 +47,7 @@
     ...
     <init-param>
         <param-name>Configuration.Class</param-name>
-        <parcom.silvermindsoftware.sg.config.GuiceRuntimeConfiguration</param-value>
+        <param-value>com.silvermindsoftware.sg.config.GuiceRuntimeConfiguration</param-value>
     </init-param>
     <init-param>
         <param-name>ActionBeanContextFactory.Class</param-name>
