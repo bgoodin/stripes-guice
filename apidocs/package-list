@@ -2,5 +2,6 @@ com.silvermindsoftware.sg.config
 com.silvermindsoftware.sg.context
 com.silvermindsoftware.sg.controller
 com.silvermindsoftware.sg.exception
+com.silvermindsoftware.sg.extension
 com.silvermindsoftware.sg.guice
 com.silvermindsoftware.sg.utils
