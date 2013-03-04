@@ -4,6 +4,11 @@
 <body>
     <section name="News">
         <ul>
+            <li>March 4, 2013 - Deployed Stripes Guice 3.1
+                <ul>Added support for injected TypeConverters</ul>
+            </li>
+        </ul>
+        <ul>
           <li>July 11, 2011 - Deployed Stripes Guice 3.0 (all thanks to <a href="https://github.com/h3adache">Tim Chen</a>)
               <ul>
                 <li>Built on Guice 3.0</li>
@@ -29,7 +34,7 @@
     <section name="Features">
         <ul>
             <li>Initialization of Guice Modules via a ServletContextListener named GuiceContextListener.</li>
-            <li>Inject constructors and members on ActionBeans, ActionBeanContext, Interceptors, and ConfigurableComponents using standard Guice mechanisms.</li>
+            <li>Inject constructors and members on ActionBeans, ActionBeanContext, Interceptors, TypeHandlers, and ConfigurableComponents using standard Guice mechanisms.</li>
             <li>Ability to provide custom means of retrieving Guice Injector through a custom GuiceInjectorFactory.</li>
         </ul>
     </section>

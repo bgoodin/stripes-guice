@@ -4,13 +4,12 @@ import com.google.inject.Inject;
 import com.silvermindsoftware.sg.stripes.app.domain.TestUser;
 import com.silvermindsoftware.sg.stripes.app.domain.TestWidget;
 import com.silvermindsoftware.sg.stripes.app.extensions.TestActionBeanContext;
+import com.silvermindsoftware.sg.stripes.app.extensions.TestTypeConverter;
 import com.silvermindsoftware.sg.stripes.app.service.TestService;
-import net.sourceforge.stripes.action.ActionBean;
-import net.sourceforge.stripes.action.ActionBeanContext;
-import net.sourceforge.stripes.action.DefaultHandler;
-import net.sourceforge.stripes.action.ForwardResolution;
-import net.sourceforge.stripes.action.Resolution;
-import net.sourceforge.stripes.action.UrlBinding;
+import net.sourceforge.stripes.action.*;
+import net.sourceforge.stripes.validation.Validate;
+
+import java.util.List;
 
 @UrlBinding("/testAction")
 public class TestAction implements ActionBean {
@@ -20,6 +19,8 @@ public class TestAction implements ActionBean {
     protected TestActionBeanContext actionBeanContext;
     protected TestUser testUser;
     protected TestWidget testWidget;
+    @Validate(converter = TestTypeConverter.class)
+    protected List testListType;
 
     protected TestService testService;
 
@@ -58,5 +59,13 @@ public class TestAction implements ActionBean {
     @Inject
     public void setTestWidget(TestWidget testWidget) {
         this.testWidget = testWidget;
+    }
+
+    public List getTestListType() {
+        return testListType;
+    }
+
+    public void setTestListType(List testListType) {
+        this.testListType = testListType;
     }
 }

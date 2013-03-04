@@ -5,6 +5,7 @@ import com.silvermindsoftware.sg.config.GuiceRuntimeConfiguration;
 import com.silvermindsoftware.sg.context.GuiceContextListener;
 import com.silvermindsoftware.sg.controller.GuiceActionBeanContextFactory;
 import com.silvermindsoftware.sg.controller.GuiceActionResolver;
+import com.silvermindsoftware.sg.extension.GuiceTypeConverterFactory;
 import com.silvermindsoftware.sg.stripes.app.actions.TestAction;
 import com.silvermindsoftware.sg.stripes.app.extensions.TestActionBeanContext;
 import com.silvermindsoftware.sg.stripes.app.interceptors.TestInterceptor;
@@ -26,18 +27,18 @@ import java.util.Map;
 import static com.silvermindsoftware.sg.stripes.app.actions.TestAction.FETCH_LIST_RESOLUTION;
 import static com.silvermindsoftware.sg.stripes.app.domain.TestWidget.DEFAULT_WIDGET_NAME;
 import static com.silvermindsoftware.sg.stripes.app.extensions.TestActionBeanContext.TEST_USER_ID;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class StripesGuiceTest {
-    @NotNull private static MockServletContext mockServletContext;
+    @NotNull
+    private static MockServletContext mockServletContext;
 
     @BeforeClass
     public static void setUp() {
         final Map<String, String> params = new HashMap<String, String>();
 
         params.put("ActionResolver.Packages", TestAction.class.getPackage().getName());
-        params.put("Extension.Packages", TestActionBeanContext.class.getPackage().getName());
+        params.put("Extension.Packages", TestActionBeanContext.class.getPackage().getName() + "," + GuiceTypeConverterFactory.class.getPackage().getName());
         params.put("Interceptor.Classes", TestInterceptor.class.getName());
 
         params.put("ActionResolver.Class", GuiceActionResolver.class.getName());
@@ -60,6 +61,7 @@ public class StripesGuiceTest {
     @Test
     public void testBasicWithRuntimeInterceptorInjection() throws Exception {
         final MockRoundtrip mockRoundtrip = new MockRoundtrip(mockServletContext, TestAction.class);
+        mockRoundtrip.addParameter("testListType", "1");
         mockRoundtrip.execute();
 
         final TestAction testAction = mockRoundtrip.getActionBean(TestAction.class);
@@ -68,11 +70,13 @@ public class StripesGuiceTest {
         assertTrue("TestUser has wrong id", testAction.getTestUser().getId().equals(TEST_USER_ID));
         assertNotNull("TestWidget is not null", testAction.getTestWidget());
         assertTrue(MessageFormat.format("TestWidget name should be {0} but is {1}",
-            DEFAULT_WIDGET_NAME, testAction.getTestWidget().getWidgetName()),
-            testAction.getTestWidget().getWidgetName().equals(DEFAULT_WIDGET_NAME));
+                DEFAULT_WIDGET_NAME, testAction.getTestWidget().getWidgetName()),
+                testAction.getTestWidget().getWidgetName().equals(DEFAULT_WIDGET_NAME));
         assertTrue(
-            MessageFormat.format("Expected destination of {0} but received {1} instead.",
-                FETCH_LIST_RESOLUTION, mockRoundtrip.getDestination()),
-            mockRoundtrip.getDestination().equals(FETCH_LIST_RESOLUTION));
+                MessageFormat.format("Expected destination of {0} but received {1} instead.",
+                        FETCH_LIST_RESOLUTION, mockRoundtrip.getDestination()),
+                mockRoundtrip.getDestination().equals(FETCH_LIST_RESOLUTION));
+        assertNotNull("test list type should not be null", testAction.getTestListType());
+        assertFalse("test list type should not be empty", testAction.getTestListType().isEmpty());
     }
 }
