@@ -9,7 +9,7 @@
 
     <groupId>com.silvermindsoftware.stripes</groupId>
     <artifactId>stripes-guice</artifactId>
-    <version>3.1</version>
+    <version>3.2-SNAPSHOT</version>
 
     <name>stripes-guice</name>
     <url>http://bgoodin.github.com/stripes-guice/</url>
