@@ -14,14 +14,14 @@ import java.util.List;
 
 import static com.silvermindsoftware.sg.utils.Helpers.createClass;
 import static com.silvermindsoftware.sg.utils.Helpers.splitClasses;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class GuiceUtilsTest {
     private final List<String> CLASSES = Lists.newArrayList("A", "B", "C");
 
-    @NotNull @Rule public ExpectedException thrown = ExpectedException.none();
+    @NotNull
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
 
     @Test
     public void testSplitClasses() throws Exception {

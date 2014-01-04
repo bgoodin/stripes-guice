@@ -11,17 +11,18 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 @Intercepts({
-    LifecycleStage.ActionBeanResolution,
-    LifecycleStage.HandlerResolution,
-    LifecycleStage.BindingAndValidation,
-    LifecycleStage.CustomValidation,
-    LifecycleStage.EventHandling,
-    LifecycleStage.ResolutionExecution,
-    LifecycleStage.RequestInit,
-    LifecycleStage.RequestComplete
+        LifecycleStage.ActionBeanResolution,
+        LifecycleStage.HandlerResolution,
+        LifecycleStage.BindingAndValidation,
+        LifecycleStage.CustomValidation,
+        LifecycleStage.EventHandling,
+        LifecycleStage.ResolutionExecution,
+        LifecycleStage.RequestInit,
+        LifecycleStage.RequestComplete
 })
 public class TestInterceptor implements Interceptor {
-    @NotNull protected TestInterceptorService testInterceptorService;
+    @NotNull
+    protected TestInterceptorService testInterceptorService;
 
     @Inject
     public TestInterceptor(@NotNull TestInterceptorService testInterceptorService) {

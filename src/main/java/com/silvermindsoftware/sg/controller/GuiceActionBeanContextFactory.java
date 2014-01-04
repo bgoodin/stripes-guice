@@ -14,8 +14,10 @@ import javax.servlet.http.HttpServletResponse;
 
 public class GuiceActionBeanContextFactory extends DefaultActionBeanContextFactory {
     private static final Logger LOGGER = LoggerFactory.getLogger(GuiceActionBeanContextFactory.class);
-    @NotNull private final Injector theInjector;
-    @NotNull private Class<? extends ActionBeanContext> theContextClass;
+    @NotNull
+    private final Injector theInjector;
+    @NotNull
+    private Class<? extends ActionBeanContext> theContextClass;
 
     @Inject
     public GuiceActionBeanContextFactory(@NotNull Injector anInjector) {
@@ -35,7 +37,7 @@ public class GuiceActionBeanContextFactory extends DefaultActionBeanContextFacto
     @NotNull
     private Class<? extends ActionBeanContext> getActionBeanClass(@NotNull Configuration aConfiguration) {
         final Class<? extends ActionBeanContext> myClass =
-            aConfiguration.getBootstrapPropertyResolver().getClassProperty(CONTEXT_CLASS_NAME, ActionBeanContext.class);
+                aConfiguration.getBootstrapPropertyResolver().getClassProperty(CONTEXT_CLASS_NAME, ActionBeanContext.class);
 
         return (myClass == null) ? ActionBeanContext.class : myClass;
     }

@@ -16,7 +16,9 @@ import static com.silvermindsoftware.sg.utils.Constants.GUICE_MODULES_PARAM;
 
 public class StripesGuiceFailTest {
     private static final String EXPECTED_EXCEPTION = "Exception when creating class";
-    @NotNull @Rule public ExpectedException thrown = ExpectedException.none();
+    @NotNull
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
 
     @Test
     public void testFailOnGuiceModuleName() {
@@ -25,9 +27,9 @@ public class StripesGuiceFailTest {
 
         final MockServletContext mockServletContext = new MockServletContext("web");
         mockServletContext.addInitParameter(GUICE_MODULES_PARAM,
-            "com.silvermindsoftware.sg.stripes.guice.IDontExistModule");
+                "com.silvermindsoftware.sg.stripes.guice.IDontExistModule");
         mockServletContext.addInitParameter(GUICE_INJECTOR_FACTORY_CLASS_NAME,
-            TestGuiceInjectorFactory.class.getName());
+                TestGuiceInjectorFactory.class.getName());
 
         final ServletContextEvent servletContextEvent = new ServletContextEvent(mockServletContext);
         final GuiceContextListener contextListener = new GuiceContextListener();
@@ -43,7 +45,7 @@ public class StripesGuiceFailTest {
         final MockServletContext mockServletContext = new MockServletContext("web");
         mockServletContext.addInitParameter(GUICE_MODULES_PARAM, TestModule.class.getName());
         mockServletContext.addInitParameter(GUICE_INJECTOR_FACTORY_CLASS_NAME,
-            "com.silvermindsoftware.sg.stripes.guice.IDontExistGuiceInjectorFactory");
+                "com.silvermindsoftware.sg.stripes.guice.IDontExistGuiceInjectorFactory");
 
         final ServletContextEvent servletContextEvent = new ServletContextEvent(mockServletContext);
         final GuiceContextListener contextListener = new GuiceContextListener();

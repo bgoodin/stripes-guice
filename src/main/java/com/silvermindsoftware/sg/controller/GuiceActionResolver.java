@@ -9,7 +9,8 @@ import net.sourceforge.stripes.controller.NameBasedActionResolver;
 import org.jetbrains.annotations.NotNull;
 
 public class GuiceActionResolver extends NameBasedActionResolver implements ActionResolver {
-    @NotNull private final Injector theInjector;
+    @NotNull
+    private final Injector theInjector;
 
     @Inject
     public GuiceActionResolver(@NotNull Injector anInjector) {

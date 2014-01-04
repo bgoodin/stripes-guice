@@ -56,7 +56,8 @@ import static com.silvermindsoftware.sg.utils.Helpers.isEmptyOrNull;
  */
 public class GuiceContextListener extends GuiceServletContextListener {
     private static final Logger LOGGER = LoggerFactory.getLogger(GuiceContextListener.class);
-    @NotNull private ServletContext theServletContext;
+    @NotNull
+    private ServletContext theServletContext;
 
     @Override
     public void contextInitialized(@NotNull ServletContextEvent aServletContextEvent) {

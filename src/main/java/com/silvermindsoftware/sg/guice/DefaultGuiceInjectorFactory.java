@@ -18,7 +18,8 @@ import static com.silvermindsoftware.sg.utils.Helpers.getModuleNames;
 
 public class DefaultGuiceInjectorFactory implements GuiceInjectorFactory {
     private static final Logger LOGGER = LoggerFactory.getLogger(DefaultGuiceInjectorFactory.class);
-    @NotNull private ServletContext theServletContext;
+    @NotNull
+    private ServletContext theServletContext;
 
     @NotNull
     public Injector getInjector(@NotNull ServletContext aServletContext) {

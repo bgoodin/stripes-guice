@@ -33,11 +33,11 @@ public class GuiceRuntimeConfiguration extends RuntimeConfiguration {
                 return myComponent;
             } catch (Exception myException) {
                 throw new StripesRuntimeException("Could not instantiate configured "
-                                                  + aComponentType.getSimpleName() + " of type ["
-                                                  + myClass.getSimpleName()
-                                                  + "]. Please check "
-                                                  + "the configuration parameters specified in your web.xml.",
-                    myException);
+                        + aComponentType.getSimpleName() + " of type ["
+                        + myClass.getSimpleName()
+                        + "]. Please check "
+                        + "the configuration parameters specified in your web.xml.",
+                        myException);
             }
         } else {
             return null;
