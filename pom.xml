@@ -9,7 +9,7 @@
 
     <groupId>com.silvermindsoftware.stripes</groupId>
     <artifactId>stripes-guice</artifactId>
-    <version>4.0.0-SNAPSHOT</version>
+    <version>3.4-SNAPSHOT</version>
 
     <name>stripes-guice</name>
     <url>http://bgoodin.github.com/stripes-guice/</url>
@@ -77,12 +77,12 @@
         <dependency>
             <groupId>com.google.inject</groupId>
             <artifactId>guice</artifactId>
-            <version>4.1.0</version>
+            <version>3.0</version>
         </dependency>
         <dependency>
             <groupId>com.google.inject.extensions</groupId>
             <artifactId>guice-servlet</artifactId>
-            <version>4.1.0</version>
+            <version>3.0</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -98,18 +98,15 @@
         <!-- PROVIDED -->
         <dependency>
             <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>3.1.0</version>
+            <artifactId>jsp-api</artifactId>
+            <version>2.0</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>javax.servlet.jsp</groupId>
-            <artifactId>javax.servlet.jsp-api</artifactId>
-            <version>2.3.1</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.el</groupId>
-            <artifactId>javax.el-api</artifactId>
-            <version>3.0.0</version>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.5</version>
+            <scope>provided</scope>
         </dependency>
 
         <!-- TEST -->
@@ -148,15 +145,6 @@
                     </descriptors>
                 </configuration>
                 <version>2.4</version>
-            </plugin>
-            <plugin>
-                <groupId>external.atlassian.jgitflow</groupId>
-                <artifactId>jgitflow-maven-plugin</artifactId>
-                <version>1.0-m5.1</version>
-                <configuration>
-                    <!-- For specific plugin configuration options,
-                    see the Goals documentation page -->
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
